@@ -16,6 +16,11 @@ module accessControl (userIDfoundFlag, loadButton_s, PASSWORD, passInput, clk, r
 	reg[2:0] state;
 	reg isFlagRed;
 	reg[1:0] attemptCnt;
+	
+	//stevencode
+	always @(posedge clk)
+	accessFlag = 1'b1;//yes access
+	/*
 
 	parameter	BIT0	= 3'b000,				// 7 States
 			BIT1	= 3'b001,
@@ -127,5 +132,5 @@ module accessControl (userIDfoundFlag, loadButton_s, PASSWORD, passInput, clk, r
 				end
 			endcase
 		end
-	end
+	end*/
 endmodule
