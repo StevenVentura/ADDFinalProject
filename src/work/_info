@@ -1,0 +1,621 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/16.1
+vaccessControl
+Z0 !s110 1492807062
+!i10b 1
+!s100 z^T<iRf?AbI0HfcfbA:GH3
+I9^`8PRjm4`hBCicUn4S^U1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src
+w1492744036
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v
+L0 11
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1492807062.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+naccess@control
+vball_move
+R0
+!i10b 1
+!s100 o0g>;VoXnA@N7MLSaN1683
+I]fBHQLB_@OEKj4L4JO0?62
+R1
+R2
+Z7 w1492115034
+Z8 8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v
+Z9 FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v
+L0 371
+R3
+r1
+!s85 0
+31
+R4
+Z10 !s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v|
+Z11 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v|
+!i113 1
+R5
+R6
+vButtonShaper
+R0
+!i10b 1
+!s100 l6T1M8FN>>nVCiJ6INTV93
+IN`gmcYo^FFXH3bUjSPSBg2
+R1
+R2
+w1492553621
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v|
+!i113 1
+R5
+R6
+n@button@shaper
+vcheckFlash
+!s110 1492723966
+!i10b 1
+!s100 RocYOKfCXXT>Sei3__X<o2
+ITh5:Xf01=SImh4h=ebGRa3
+R1
+R2
+w1492053767
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/checkFlash.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/checkFlash.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1492723966.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/checkFlash.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/checkFlash.v|
+!i113 1
+R5
+R6
+ncheck@flash
+vclk_reduce
+R0
+!i10b 1
+!s100 >c^4WB2QN[nj@Z7UOFneG0
+INkI3gckU8U4Mm6LGIhb5V1
+R1
+R2
+R7
+R8
+R9
+L0 257
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+vCountDownTimer
+R0
+!i10b 1
+!s100 T;hRNJnTHLN?O8?AbLPz23
+I>`2CJDAQ`k65iE]AG4Z@22
+R1
+R2
+w1492572452
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v|
+!i113 1
+R5
+R6
+n@count@down@timer
+vCounter100ms
+R0
+!i10b 1
+!s100 Qc`HOIT_23Ncl0Rb8M0]50
+IAAJno_J5eo2WUgbLG1jND0
+R1
+R2
+w1491611230
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v|
+!i113 1
+R5
+R6
+n@counter100ms
+vEdgeTriggerButton
+R0
+!i10b 1
+!s100 ^;f4TdNTG[jLZCIkP8c3c0
+IO_7IOMeGg20>fgfa5K8Dh3
+R1
+R2
+R7
+R8
+R9
+L0 438
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+n@edge@trigger@button
+vgame_fps
+R0
+!i10b 1
+!s100 e@Z`5X[BW__M6l;YU0;mY1
+IYTOizB8agSeX5;Xc1GBbz3
+R1
+R2
+R7
+R8
+R9
+L0 343
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+vgameBrain
+R0
+!i10b 1
+!s100 Z]2VzanN>1=KD_]Vl=czR3
+ISZlBiI94W_5<UbdZzBA[:2
+R1
+R2
+R7
+R8
+R9
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+ngame@brain
+vGameController
+Z12 !s110 1492807063
+!i10b 1
+!s100 Q_SOKK@Sm7_B9^XoGA05Z2
+I9FW`1FCQQZXk`L[IiXcSI2
+R1
+R2
+w1492806897
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v
+L0 7
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v|
+!i113 1
+R5
+R6
+n@game@controller
+vLFSR_Timer_1ms
+R12
+!i10b 1
+!s100 NVl;n_J6G@6PFdnLJ3=mD2
+IX_F<nl5LOlc3dCZo91;=:3
+R1
+R2
+w1492287600
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z13 !s108 1492807063.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v|
+!i113 1
+R5
+R6
+n@l@f@s@r_@timer_1ms
+vloadReg
+!s110 1492723967
+!i10b 1
+!s100 `lVUka_9kYA42V6^@GJFW1
+IVR;cd>aQzg`C[T3N;c^3b1
+R1
+R2
+w1492222687
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1492723967.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg.v|
+!i113 1
+R5
+R6
+nload@reg
+vloadReg16b
+R12
+!i10b 1
+!s100 oYeU__m0?BXPBN@MdCf>C2
+IZhWl?VfCFC9C]7hCgjIgZ0
+R1
+R2
+w1492804751
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v
+L0 1
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v|
+!i113 1
+R5
+R6
+nload@reg16b
+vloadReg16b_test
+R12
+!i10b 1
+!s100 1`gM0HLdjaUMV_>S^iedj3
+IM2Y1GmYF0LMXjDZmeaUi40
+R1
+R2
+w1492722954
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v
+L0 1
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v|
+!i113 1
+R5
+R6
+nload@reg16b_test
+vloadReg4b
+Z14 !s110 1492807064
+!i10b 1
+!s100 kdHeO1Pdfd<8UoIYIeb<n1
+IG1jY;@Mm_`KGJZFMzjMDd1
+R1
+R2
+w1492804843
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z15 !s108 1492807064.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v|
+!i113 1
+R5
+R6
+nload@reg4b
+vnumDisp
+R12
+!i10b 1
+!s100 5>cCbo17GJbiMZD79od0P3
+I3bM2LCDO@mLmHk:mI9TK12
+R1
+R2
+w1491616969
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v
+L0 8
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v|
+!i113 1
+R5
+R6
+nnum@disp
+vRAM_scores
+R14
+!i10b 1
+!s100 MEDb^MOYjFdBW^@^JI5dU1
+IJAOiZNnD2UiGcaKYm2Oh11
+R1
+R2
+w1492803471
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v
+Z16 L0 40
+R3
+r1
+!s85 0
+31
+R15
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v|
+!i113 1
+R5
+R6
+n@r@a@m_scores
+vrandomGenerator
+R12
+!i10b 1
+!s100 BXOiz<Bh^DbeYC7DZfDEJ2
+I;S0:T>FEhdI@T@:<mbm>b2
+R1
+R2
+w1492115022
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v
+L0 8
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v|
+!i113 1
+R5
+R6
+nrandom@generator
+vROM_controller
+R12
+!i10b 1
+!s100 CSUFKL_<D7`EFEJ;_d5=f0
+I9A08:dzo6NZ5fzBG1zg_71
+R1
+R2
+w1492725679
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v
+L0 3
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v|
+!i113 1
+R5
+R6
+n@r@o@m_controller
+vROM_pass
+R12
+!i10b 1
+!s100 5c[MEa?LF_n5S4ohR7aPW3
+IScDcY7J<>TLOOFBEIoj1I0
+R1
+R2
+w1492726721
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v
+R16
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v|
+!i113 1
+R5
+R6
+n@r@o@m_pass
+vROM_userID
+R12
+!i10b 1
+!s100 Fd]`z1:c2mk?VNiVf6fX13
+In<JZm@JcR]6XE<oU7cTob1
+R1
+R2
+w1492726634
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v
+R16
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v|
+!i113 1
+R5
+R6
+n@r@o@m_user@i@d
+vscoreCounter
+R12
+!i10b 1
+!s100 3>PTmaEQ:@RJazZdz3?PZ2
+IcTkkFRhRz[BQB^B>dOLUQ0
+R1
+R2
+w1492806310
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v
+L0 7
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v|
+!i113 1
+R5
+R6
+nscore@counter
+vseparateNumDigits
+R14
+!i10b 1
+!s100 jMkdgG73UhF85NzH4i[BN3
+I?F22BFIlT^`?`mCY^lfD>1
+R1
+R2
+w1492729747
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v
+L0 1
+R3
+r1
+!s85 0
+31
+R13
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v|
+!i113 1
+R5
+R6
+nseparate@num@digits
+vseparateNumDigits_test
+R14
+!i10b 1
+!s100 T<9^6P86O5Q6CTQ2<Cmal3
+IO0fe<InP1I`@EH;NP0;@O3
+R1
+R2
+w1492729143
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v
+L0 2
+R3
+r1
+!s85 0
+31
+R15
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v|
+!i113 1
+R5
+R6
+nseparate@num@digits_test
+vtestbench
+!s110 1492724259
+!i10b 1
+!s100 I88;2DAK0aI9dmKgm[GWU0
+Ig=?e[N7N:KG6@5EkmC^882
+R1
+R2
+w1492568734
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/testbench.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/testbench.v
+L0 2
+R3
+r1
+!s85 0
+31
+!s108 1492724259.000000
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/testbench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/testbench.v|
+!i113 1
+R5
+R6
+vtop
+R0
+!i10b 1
+!s100 mbFm=@^@kOH8ShY142W6R3
+ID:9Q:P<2?NChPbo^[3GQ12
+R1
+R2
+w1492806452
+8C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v
+FC:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v
+L0 34
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v|
+!i113 1
+R5
+R6
+vVGA_gen
+R0
+!i10b 1
+!s100 ncU;OHiNDF>dX^G6NRi^z0
+II1ReALZXemO:Ae?Z5YZ041
+R1
+R2
+R7
+R8
+R9
+L0 288
+R3
+r1
+!s85 0
+31
+R4
+R10
+R11
+!i113 1
+R5
+R6
+n@v@g@a_gen

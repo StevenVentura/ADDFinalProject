@@ -1,0 +1,148 @@
+{C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_userID.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ROM_userID
+
+Top level modules:
+	ROM_userID
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg4b.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module loadReg4b
+
+Top level modules:
+	loadReg4b
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/scoreCounter.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module scoreCounter
+
+Top level modules:
+	scoreCounter
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/loadReg16b.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module loadReg16b
+
+Top level modules:
+	loadReg16b
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/LFSR_Timer_1ms.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module LFSR_Timer_1ms
+
+Top level modules:
+	LFSR_Timer_1ms
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/RAM_scores.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module RAM_scores
+
+Top level modules:
+	RAM_scores
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits_test.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module separateNumDigits_test
+
+Top level modules:
+	separateNumDigits_test
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/randomGenerator.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module randomGenerator
+
+Top level modules:
+	randomGenerator
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/separateNumDigits.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module separateNumDigits
+
+Top level modules:
+	separateNumDigits
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/ROM_controller.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ROM_controller
+
+Top level modules:
+	ROM_controller
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/Counter100ms.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module Counter100ms
+
+Top level modules:
+	Counter100ms
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/CountDownTimer.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CountDownTimer
+
+Top level modules:
+	CountDownTimer
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/top.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v} {2 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module accessControl
+** Warning: C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/accessControl.v(51): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+
+Top level modules:
+	accessControl
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/GameController.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module GameController
+
+Top level modules:
+	GameController
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/syn/ROM_pass.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ROM_pass
+
+Top level modules:
+	ROM_pass
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/gameBrain.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module gameBrain
+-- Compiling module clk_reduce
+-- Compiling module VGA_gen
+-- Compiling module game_fps
+-- Compiling module ball_move
+-- Compiling module EdgeTriggerButton
+
+Top level modules:
+	gameBrain
+	EdgeTriggerButton
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/buttonShaper.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ButtonShaper
+
+Top level modules:
+	ButtonShaper
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/sim/loadReg16b_test.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module loadReg16b_test
+
+Top level modules:
+	loadReg16b_test
+
+} {} {}} {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v} {1 {vlog -work work -stats=none {C:/Users/bqtdo/Dropbox/2017 SPRING/Adv Digital Design/Final Project/theGame/src/numDisp.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module numDisp
+
+Top level modules:
+	numDisp
+
+} {} {}}

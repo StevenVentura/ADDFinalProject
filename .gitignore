@@ -45,3 +45,20 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#steven additions 12:22 PM 4/22/2017
+output_files
+incremental_db
+db
+*.bak
+*.kpt
+*.tdf
+*.cdb
+*.bpm
+*.ammdb
+*.ddb
+*.flock
+*.qdb
+*.qtl
+*.qpg
+
