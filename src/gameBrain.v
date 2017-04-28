@@ -7,9 +7,13 @@ module gameBrain(
 	rst, Speed, startGame, directionButton1, directionButton2, random, 
 
 	// outputs
-	master_clk, DAC_clk, VGA_R, VGA_G, VGA_B, VGA_hSync, VGA_vSync, blank_n, 
-	hitApple, gameOverFlag, BALL_clk);
-	
+	master_clk, DAC_clk,VGA_hSync, VGA_vSync, blank_n, 
+	hitApple, gameOverFlag, BALL_clk,
+	//new pixel values
+	pixelColumn,pixelRow,
+	//my pixel booleans
+	textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel);
+//output reg middleSection=FALSE, boundaries=FALSE, playerArea = FALSE, appleArea = FALSE,enemyPixel = FALSE;
 	parameter enemySize	= 15
 		, appleSize	= 20;
 	parameter 	CEILING	= 350,
@@ -30,21 +34,18 @@ module gameBrain(
 	input directionButton1,directionButton2;
 	input[15:0] random;
 	integer please;//counter for my loops
-	reg [15:0] stevenbackgroundsequence=16'b0000111100001111;
+	
 	output reg hitApple;
-	output reg [7:0]VGA_R, VGA_G, VGA_B;  //Red, Green, Blue VGA signals
+	
 	output VGA_hSync, VGA_vSync, DAC_clk, blank_n; //Horizontal and Vertical sync signals
-	wire [9:0] pixelColumn; //current x pixel coordinate
-	wire [9:0] pixelRow; //current y pixel coordinate
-	wire displayArea; //boolean: current x and y pixel are within the screen bounds
+	output wire [9:0] pixelColumn; //current x pixel coordinate
+	output wire [9:0] pixelRow; //current y pixel coordinate
+	output reg displayArea; //boolean: current x and y pixel are within the screen bounds
 	wire VGA_clk; //25 MHz
 	output BALL_clk; //28 frames per second on 60MHz
 	wire [9:0] ballX, ballY;
-	wire R;
-	wire G;
-	wire B;
 	input startGame;
-	reg letterPixel, textBox;
+	output reg letterPixel, textBox;
 	//define the bounds of the textbox
 	parameter textBoxTop = 480,
 			  textBoxBottom = 480-32,
@@ -118,7 +119,8 @@ c7 [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,
 c8 [0:31] = '{'h00000000,'h00000000,'h00000000,'h000f8000,'h0018c000,'h00206000,'h00602000,'h00603000,'h00201000,'h00201000,'h00101000,'h000a2000,'h000f2000,'h0003e000,'h0001c000,'h0001e000,'h00033000,'h00061800,'h000c0c00,'h00080600,'h00180200,'h00100300,'h00180200,'h000e0600,'h0003fc00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
 c9 [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h0001f800,'h00070c00,'h00080200,'h00080300,'h00180100,'h00180100,'h00180080,'h00180080,'h00180080,'h001c0180,'h00160100,'h0013fe00,'h00100000,'h00100000,'h00300000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00000000,'h00000000,'h00000000},
 c_ [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
-cEQUALS [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000}
+cEQUALS [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
+cCHICKEN [0:31] = '{'h000006c0,'h000007c0,'h00001d40,'h00001540,'h000077c0,'h00004ce0,'h00007860,'h00003320,'h00001320,'h00001038,'hf000187e,'hd80008ff,'ha40009b0,'h1e000b08,'h0f001e0c,'h05801084,'h02c03984,'h02606984,'h03f9cf84,'h010ef1dc,'h01e898f0,'h017ad880,'h011bf880,'h01b42880,'h00f56880,'h00dd9880,'h00583080,'h006fe180,'h00360300,'h00180600,'h00063c00,'h0003e000}
 ;
 	
 	task drawNumber(input [3:0] textIndex, input [3:0] number);
@@ -171,20 +173,22 @@ endtask
 		end
 		else	begin
 //		START:	begin
-drawCharacter(0,cW);
-drawCharacter(1,cE);
-drawCharacter(2,cL);
-drawCharacter(3,cC);
-drawCharacter(4,cO);
-drawCharacter(5,cM);
-drawCharacter(6,cE);
-drawCharacter(7,c_);
-drawCharacter(8,cL);
-drawCharacter(9,cO);
-drawCharacter(10,cG);
-drawCharacter(11,c_);
-drawCharacter(12,cI);
-drawCharacter(13,cN);
+drawCharacter(0,cCHICKEN);
+drawCharacter(1,cCHICKEN);
+drawCharacter(2,cCHICKEN);
+drawCharacter(3,cCHICKEN);
+drawCharacter(4,cCHICKEN);
+drawCharacter(5,cCHICKEN);
+drawCharacter(6,cCHICKEN);
+drawCharacter(7,cCHICKEN);
+drawCharacter(8,cCHICKEN);
+drawCharacter(9,cCHICKEN);
+drawCharacter(10,cCHICKEN);
+drawCharacter(11,cCHICKEN);
+drawCharacter(12,cCHICKEN);
+drawCharacter(13,cCHICKEN);
+drawCharacter(14,cCHICKEN);
+drawCharacter(15,cCHICKEN);
 
 			for (i=0;i<16;i=i+1) begin
 				enemyXs[i] <= enemyXs[i] - Speed;
@@ -269,13 +273,7 @@ drawCharacter(13,cN);
 
 	
 	//drawing
-	reg middleSection=FALSE, boundaries=FALSE, playerArea = FALSE, appleArea = FALSE;
-	reg enemyPixel = FALSE;
-	// this is an optional part to display the deadly screen when game is over. There is nothing to look at!!!
-	always @(posedge master_clk) begin
-		stevenbackgroundsequence[0] <= stevenbackgroundsequence[1] ^ stevenbackgroundsequence[2] ^ stevenbackgroundsequence[4] ^ stevenbackgroundsequence[15];
-		stevenbackgroundsequence[15:1] <= stevenbackgroundsequence[14:0];
-	end
+	output reg middleSection=FALSE, boundaries=FALSE, playerArea = FALSE, appleArea = FALSE,enemyPixel = FALSE;
 	
 	
 	always @(posedge VGA_clk) begin
@@ -311,48 +309,8 @@ drawCharacter(13,cN);
 	end//end always
 	
 	///////////////////END OF INSTRUCTIONS FOR DRAWING TO THE SCREEN
-	//draw to the screen
-	assign R = displayArea && (
-			letterPixel
-			||
-			(playerArea && ~gameOverFlag && ~boundaries)
-			||
-			(appleArea)
-			||
-			(enemyPixel)//red and yellow 
-			||
-			(boundaries && gameOverFlag)
-			);
-	assign G = displayArea && (
-			letterPixel
-			||
-			(playerArea && ~gameOverFlag)
-			||
-			gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel && (stevenbackgroundsequence[0] || stevenbackgroundsequence[3]))
-			||
-			//~gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel)
-			//||
-			gameOverFlag && (boundaries && ~playerArea && ~appleArea && ~enemyPixel && stevenbackgroundsequence[2])
-			||
-			~gameOverFlag && (boundaries && ~playerArea && ~enemyPixel && ~appleArea)
-			||
-			(enemyPixel)
-			);
-	assign B = displayArea && ( 
-				letterPixel
-				||
-				(playerArea && ~gameOverFlag)
-				|| 
-				gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel && (stevenbackgroundsequence[1]))
-				||
-				~gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel)
-				);
-	always@(posedge VGA_clk)
-	begin
-		VGA_R = {8{R}};
-		VGA_G = {8{G}};
-		VGA_B = {8{B}};
-	end 
+	
+	 
 
 endmodule
 

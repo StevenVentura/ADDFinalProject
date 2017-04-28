@@ -1,5 +1,5 @@
 // Apple Collector Game
-// Team Busy Boys
+// Team Busy Boys (Steven Ventura, Binh Doan, etc)
 /* Project Description
 Features:
 - able to choose user prior to play the game. Each user has their own password.
@@ -68,6 +68,12 @@ module top(clk, KEY,
 	wire [6:0] RAM_score, currentScore, maxScore;
 	wire [3:0] RAM_address;
 	wire load_s, writeOrRead;
+	
+	//drawing information
+	wire [9:0] pixelRow,pixelColumn;
+	wire [3:0] drawingState;
+	wire textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
+	
 
 	assign resetGameFlag = ~(clearFlag || ~rst);
 	assign rst = KEY[0];
@@ -118,12 +124,31 @@ module top(clk, KEY,
 		HEX0_s, HEX1_s, HEX2_s, HEX3_s, HEX4_s, HEX5_s, HEX6_s, HEX7_s,
 		writeOrRead, maxScore);
 
-	
+	//moves the objects around, does intersectcions, etc
 	gameBrain game(
 	resetGameFlag, setSpeed, startGameFlag, move1_s, move2_s, random,
-	clk, DAC_clk, VGA_R, VGA_G, VGA_B, VGA_hSync, VGA_vSync, blank_n, 
-	scoreFlag, gameOverFlag, BALL_clk);
+	clk, DAC_clk, VGA_hSync, VGA_vSync, blank_n, 
+	scoreFlag, gameOverFlag, BALL_clk,
+	pixelRow,pixelColumn,
+	textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel);
 
+	//calculates the current state-machine-state of the game based on which boolean flags are up
+	DrawingStateHandler dsh (
+	clk,
+	drawingState
+	);
+	//takes inputs from gameBrain and accessController and other modules to draw text and stuff on the screen
+	DrawTheGame dtg (
+	clk,
+	//inputs
+	drawingState,pixelRow,pixelColumn,
+	//from gameBrain
+	textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
+	//from somewhere else lol
+	gameOverFlag,
+	//outputs
+	VGA_R, VGA_G, VGA_B
+	);
 	
 	randomGenerator RNG(BALL_clk, clk, rst, random);
 	/*******************************************************************************************/
