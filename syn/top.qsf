@@ -205,7 +205,7 @@ set_global_assignment -name VERILOG_FILE ../src/numDisp.v
 set_global_assignment -name VERILOG_FILE ../src/loadReg16b.v
 set_global_assignment -name VERILOG_FILE ../src/LFSR_Timer_1ms.v
 set_global_assignment -name VERILOG_FILE ../src/GameController.v
-set_global_assignment -name VERILOG_FILE ../src/gameBrain.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/gameBrain.v
 set_global_assignment -name VERILOG_FILE ../src/Counter100ms.v
 set_global_assignment -name VERILOG_FILE ../src/CountDownTimer.v
 set_global_assignment -name VERILOG_FILE ../src/buttonShaper.v
