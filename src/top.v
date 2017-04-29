@@ -135,16 +135,18 @@ module top(clk, KEY,
 	//calculates the current state-machine-state of the game based on which boolean flags are up
 	DrawingStateHandler dsh (
 	clk,
+	startGameFlag,
 	drawingState
 	);
 	//takes inputs from gameBrain and accessController and other modules to draw text and stuff on the screen
 	DrawTheGame dtg (
 	clk,
 	//inputs
+	currentScore,
+	secDigit2,secDigit1,minDigit1,msDigit1,
 	drawingState,pixelRow,pixelColumn,
 	//from gameBrain
 	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
-	BALL_clk,
 	//from somewhere else lol
 	gameOverFlag,
 	//outputs

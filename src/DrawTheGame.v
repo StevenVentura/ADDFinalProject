@@ -1,15 +1,16 @@
 module DrawTheGame(
 	clk,
 	//inputs
+	currentScore,
+	secDigit2,secDigit1,minDigit1,msDigit1,
 	drawingState,pixelRow,pixelColumn,
 	//from gameBrain
 	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
-	gameClock,
 	//from somewhere else xd
 	gameOverFlag,
 	//outputs
 	VGA_R, VGA_G, VGA_B);
-	
+	input[3:0] secDigit2, secDigit1, msDigit1, minDigit1;//, scoreDigitR, scoreDigitL, ROM_address;
 	parameter reg [31:0] 
 cA [0:31] = '{'h0000c000,'h0000c000,'h0000c000,'h0001c000,'h00012000,'h00012000,'h00033000,'h00021000,'h00061800,'h00040800,'h000c0800,'h00080400,'h00080600,'h00100200,'h00100300,'h00200100,'h00200180,'h0041ff80,'h007ff980,'h007f8040,'h00c00060,'h00800020,'h00800030,'h00800010,'h01000018,'h01000008,'h0300000c,'h02000004,'h02000006,'h04000003,'h04000001,'h08000001},
 cB [0:31] = '{'h00000000,'h000003f0,'h00001c10,'h00007010,'h0000c010,'h00010010,'h00020010,'h00060010,'h00040010,'h00040010,'h00040010,'h00040010,'h00060010,'h00030010,'h0001e010,'h00003f10,'h000000f0,'h00001ff0,'h0003f010,'h00060010,'h000c0018,'h00080008,'h00080008,'h00080008,'h000c0008,'h00060008,'h00030018,'h0001c010,'h00007f90,'h000000f0,'h00000030,'h00000000},
@@ -49,7 +50,10 @@ c8 [0:31] = '{'h00000000,'h00000000,'h00000000,'h000f8000,'h0018c000,'h00206000,
 c9 [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h0001f800,'h00070c00,'h00080200,'h00080300,'h00180100,'h00180100,'h00180080,'h00180080,'h00180080,'h001c0180,'h00160100,'h0013fe00,'h00100000,'h00100000,'h00300000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00200000,'h00000000,'h00000000,'h00000000},
 c_ [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
 cEQUALS [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h007fff00,'h007fff00,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
-cCHICKEN [0:31] = '{'h000006c0,'h000007c0,'h00001d40,'h00001540,'h000077c0,'h00004ce0,'h00007860,'h00003320,'h00001320,'h00001038,'hf000187e,'hd80008ff,'ha40009b0,'h1e000b08,'h0f001e0c,'h05801084,'h02c03984,'h02606984,'h03f9cf84,'h010ef1dc,'h01e898f0,'h017ad880,'h011bf880,'h01b42880,'h00f56880,'h00dd9880,'h00583080,'h006fe180,'h00360300,'h00180600,'h00063c00,'h0003e000}
+cCHICKEN [0:31] = '{'h000006c0,'h000007c0,'h00001d40,'h00001540,'h000077c0,'h00004ce0,'h00007860,'h00003320,'h00001320,'h00001038,'hf000187e,'hd80008ff,'ha40009b0,'h1e000b08,'h0f001e0c,'h05801084,'h02c03984,'h02606984,'h03f9cf84,'h010ef1dc,'h01e898f0,'h017ad880,'h011bf880,'h01b42880,'h00f56880,'h00dd9880,'h00583080,'h006fe180,'h00360300,'h00180600,'h00063c00,'h0003e000},
+cBASILBOYS [0:31] = '{'h04780000,'h04000000,'h0c000000,'h180f0000,'hf1e181e0,'h0000c700,'h487f5c01,'h4c01dfc2,'hc403f065,'h00061820,'h000c0c00,'h00080405,'h001b8402,'h00178790,'h40178e0c,'he0130b91,'h401009e0,'ha0101920,'hf0181136,'h407c3910,'ha0c3b910,'ha1819910,'h0103f910,'h02020910,'h02040b10,'h02040a30,'h02040a20,'h02040820,'h000c0000,'h00000000,'h00000000,'h00000000},
+cCOLON [0:31] = '{'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h0003e000,'h0003f000,'h0003f000,'h0003e000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h0007e000,'h0007e000,'h0007e000,'h0003e000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000,'h00000000},
+cCLOCK [0:31] = '{'h00000000,'hde0000f6,'hf300019e,'h51800314,'hf8c0063e,'hd8631c36,'hc4631c46,'hc1e79e0e,'h61f33f0c,'h63ffff8c,'h7f0201fc,'h3e8302f8,'h3c410478,'h3c010078,'h3c010078,'h1a0100b0,'h19010130,'h18010030,'h18030030,'h0f7f81e0,'h0c078060,'h0c030060,'h0c4004e0,'h0e8002e0,'h070001c0,'h03000180,'h03104380,'h01a02f00,'h01c21e00,'h00f27800,'h001fc000,'h00078000}
 ;
 integer please;//counter for my loops
 	//define the bounds of the textbox
@@ -91,10 +95,10 @@ for (please=0;please<32;please=please+1)
 endtask
 
 	input clk;
-	input gameClock;
 input gameOverFlag;
 input [3:0] drawingState;
 input [9:0] pixelRow, pixelColumn;
+input [6:0] currentScore;
 input displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
 reg textBox,letterPixel;
 
@@ -149,25 +153,50 @@ wire R;
 				||
 				~gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel)
 				);
-always @(posedge gameClock) begin
+				
+parameter ENTERING_PASSWORD=4'd0,
+		  PLAYING_GAME=4'd3;
+		  
+always @(posedge clk) begin
 
-drawCharacter(0,cCHICKEN);
-drawCharacter(1,cCHICKEN);
-drawCharacter(2,cCHICKEN);
-drawCharacter(3,cCHICKEN);
-drawCharacter(4,cCHICKEN);
-drawCharacter(5,cCHICKEN);
-drawCharacter(6,cCHICKEN);
-drawCharacter(7,cCHICKEN);
-drawCharacter(8,cCHICKEN);
-drawCharacter(9,cCHICKEN);
-drawCharacter(10,cCHICKEN);
-drawCharacter(11,cCHICKEN);
+case(drawingState) 
+ENTERING_PASSWORD: begin
+drawCharacter(0,cE);
+drawCharacter(1,cN);
+drawCharacter(2,cT);
+drawCharacter(3,cE);
+drawCharacter(4,cR);
+drawCharacter(5,c_);
+drawCharacter(6,cP);
+drawCharacter(7,cA);
+drawCharacter(8,cS);
+drawCharacter(9,cS);
+drawCharacter(10,cW);
+drawCharacter(11,cO);
+drawCharacter(12,cR);
+drawCharacter(13,cD);
+drawCharacter(14,cCHICKEN);
+drawCharacter(15,cCHICKEN);
+end//end ENTERING_PASSWORD
+PLAYING_GAME: begin
+drawCharacter(0,cBASILBOYS);
+drawCharacter(1,cCOLON);
+drawNumber(2,((currentScore - currentScore%10)%100)/10);
+drawNumber(3,currentScore%10);
+drawCharacter(4,c_);
+drawCharacter(5,c_);
+drawCharacter(6,cCLOCK);
+drawNumber(7,minDigit1);
+drawCharacter(8,cCOLON);
+drawNumber(9,secDigit2);
+drawNumber(10,secDigit1);
+drawNumber(11,msDigit1);
 drawCharacter(12,cCHICKEN);
 drawCharacter(13,cCHICKEN);
 drawCharacter(14,cCHICKEN);
 drawCharacter(15,cCHICKEN);
-
+end//end PLAYING_GAME
+endcase
 end//end always
 always@(posedge clk)
 	begin
