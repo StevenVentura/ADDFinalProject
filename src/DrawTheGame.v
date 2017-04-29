@@ -1,9 +1,12 @@
+//9:08 PM Friday, April 28, 2017
+//Steven Ventura. Font created by hand in my java applet. 
+//https://github.com/StevenVentura/ADDFinalProject
 module DrawTheGame(
-	clk,
+	clk,PASSWORD,
 	//inputs
 	currentScore,
 	secDigit2,secDigit1,minDigit1,msDigit1,
-	drawingState,pixelRow,pixelColumn,
+	drawingState,accessControlState,gameControllerState,pixelRow,pixelColumn,
 	//from gameBrain
 	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
 	//from somewhere else xd
@@ -90,15 +93,18 @@ for (please = 0; please < 32; please = please + 1)
 	textField[please][textIndex*32+31 -: 32] = letterChoice[please];
 endtask
 task clearTextField();
-for (please=0;please<32;please=please+1)
-	textField[please] = 0;
+for (please = 0; please < 16; please = please + 1)
+	drawCharacter(please, c_);
 endtask
 
 	input clk;
 input gameOverFlag;
 input [3:0] drawingState;
+input [2:0] accessControlState;
+input [3:0] gameControllerState;
 input [9:0] pixelRow, pixelColumn;
 input [6:0] currentScore;
+input [15:0] PASSWORD;
 input displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
 reg textBox,letterPixel;
 
@@ -154,30 +160,118 @@ wire R;
 				~gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel)
 				);
 				
-parameter ENTERING_PASSWORD=4'd0,
-		  PLAYING_GAME=4'd3;
-		  
+//states for DrawingStateHandler controller
+parameter ENTERING_CREDENTIALS=4'd1,
+		  ENTERING_TIME=4'd2,
+		  PLAYING_GAME=4'd3,
+		  PLAYER_DEAD = 4'd4;
+//states taken from accessControl.v
+parameter	BIT0	= 3'b000,				// 7 States
+			BIT1	= 3'b001,
+		 	BIT2	= 3'b010,
+			BIT3	= 3'b011,
+			BIT4	= 3'b100,
+			BIT5	= 3'b101,
+		   VERIFICATION = 3'b110,
+			END	= 3'b111;
+//states taken from GameController.v
+parameter 	INIT		=	0,
+			CHECKPASS	= 	1,
+			SETTIME		=	2,
+			GETREADY	=	3,
+			START		=	4,	
+			
+			RESULT		=	5,
+			WAIT1		= 	6,
+			WAIT2		=	7,
+			BLINK		= 	8;
+
 always @(posedge clk) begin
 
 case(drawingState) 
-ENTERING_PASSWORD: begin
-drawCharacter(0,cE);
-drawCharacter(1,cN);
+ENTERING_CREDENTIALS: begin
+drawCharacter(0,cP);
+drawCharacter(1,cA);
+drawCharacter(2,cS);
+drawCharacter(3,cS);
+drawCharacter(4,cCOLON);
+drawCharacter(5,cX);
+drawCharacter(6,cX);
+drawCharacter(7,cX);
+drawCharacter(8,cX);
+case(accessControlState)
+BIT1:begin
+drawNumber(5,PASSWORD[15:12]);
+end
+BIT2:begin
+drawNumber(5,PASSWORD[15:12]);
+drawNumber(6,PASSWORD[11:8]);
+end
+BIT3:begin
+drawNumber(5,PASSWORD[15:12]);
+drawNumber(6,PASSWORD[11:8]);
+drawNumber(7,PASSWORD[7:4]);
+end
+END:begin
+drawCharacter(0,cL);
+drawCharacter(1,cO);
+drawCharacter(2,cC);
+drawCharacter(3,cK);
+drawCharacter(4,cE);
+drawCharacter(5,cD);
+drawCharacter(6,cCHICKEN);
+drawCharacter(7,cO);
+drawCharacter(8,cU);
+drawCharacter(9,cT);
+drawCharacter(10,cCHICKEN);
+drawCharacter(11,c_);
+drawCharacter(12,cH);
+drawCharacter(13,cA);
+drawCharacter(14,cH);
+drawCharacter(15,cA);
+end//end state END
+endcase//end case(accessControlState)
+end//end ENTERING_CREDENTIALS
+ENTERING_TIME:begin
+drawCharacter(0,cS);
+drawCharacter(1,cE);
 drawCharacter(2,cT);
-drawCharacter(3,cE);
-drawCharacter(4,cR);
-drawCharacter(5,c_);
-drawCharacter(6,cP);
-drawCharacter(7,cA);
-drawCharacter(8,cS);
-drawCharacter(9,cS);
-drawCharacter(10,cW);
-drawCharacter(11,cO);
-drawCharacter(12,cR);
-drawCharacter(13,cD);
-drawCharacter(14,cCHICKEN);
-drawCharacter(15,cCHICKEN);
-end//end ENTERING_PASSWORD
+drawCharacter(3,c_);
+drawCharacter(4,cT);
+drawCharacter(5,cI);
+drawCharacter(6,cM);
+drawCharacter(7,cE);
+drawCharacter(8,c_);
+drawNumber(9,minDigit1);
+drawCharacter(10,cCOLON);
+drawNumber(11,secDigit2);
+drawNumber(12,secDigit1);
+drawCharacter(13,c_);
+drawCharacter(14,c_);
+drawCharacter(15,c_);
+end//end ENTERING_TIME
+PLAYER_DEAD: begin
+drawCharacter(0,cY);
+drawCharacter(1,cO);
+drawCharacter(2,cU);
+drawCharacter(3,c_);
+drawCharacter(4,cD);
+drawCharacter(5,cI);
+drawCharacter(6,cE);
+drawCharacter(7,cD);
+drawCharacter(8,c_);
+drawCharacter(9,c_);
+drawCharacter(10,cCHICKEN);
+drawCharacter(11,cCOLON);
+drawNumber(12,((currentScore - currentScore%10)%100)/10);
+drawNumber(13,currentScore%10);
+drawCharacter(14,c_);
+drawCharacter(15,c_);
+
+
+
+
+end//end PLAYER_DEAD
 PLAYING_GAME: begin
 drawCharacter(0,cBASILBOYS);
 drawCharacter(1,cCOLON);

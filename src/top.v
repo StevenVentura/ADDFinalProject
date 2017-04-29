@@ -72,6 +72,8 @@ module top(clk, KEY,
 	//drawing information
 	wire [9:0] pixelRow,pixelColumn;
 	wire [3:0] drawingState;
+	wire [2:0] accessControlState;
+	wire [3:0] gameControllerState;
 	wire displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
 	
 
@@ -95,7 +97,7 @@ module top(clk, KEY,
 	/******************************************************************************************/
 	/*************************************** accessControl ************************************/
 	
-	accessControl accessControl1(userIDfoundFlag, enableSetPassFlag, PASSWORD, switches[3:0], clk, rst, accessFlag, blinkFlag, outOfAttemptsFlag);
+	accessControl accessControl1(userIDfoundFlag, enableSetPassFlag, PASSWORD, switches[3:0], clk, rst, accessFlag, blinkFlag, outOfAttemptsFlag,accessControlState);
 	
 	ROM_controller traceUserID(clk, rst, userID, q, ROM_address, userIDfoundFlag);
 	ROM_userID	ROM_userID1(ROM_address,clk,q);
@@ -122,7 +124,8 @@ module top(clk, KEY,
 		setTimeMaxFlag, startGameFlag, enableSetTimeFlag, 
 		enableSetUserIDFlag, enableSetPassFlag, enableStartButtonFlag, clearFlag,
 		HEX0_s, HEX1_s, HEX2_s, HEX3_s, HEX4_s, HEX5_s, HEX6_s, HEX7_s,
-		writeOrRead, maxScore);
+		writeOrRead, maxScore,
+		gameControllerState);
 
 	//moves the objects around, does intersectcions, etc
 	gameBrain game(
@@ -136,15 +139,18 @@ module top(clk, KEY,
 	DrawingStateHandler dsh (
 	clk,
 	startGameFlag,
-	drawingState
+	drawingState,
+	accessControlState,
+	gameOverFlag,
+	gameControllerState
 	);
 	//takes inputs from gameBrain and accessController and other modules to draw text and stuff on the screen
 	DrawTheGame dtg (
-	clk,
+	clk,PASSWORD,
 	//inputs
 	currentScore,
 	secDigit2,secDigit1,minDigit1,msDigit1,
-	drawingState,pixelRow,pixelColumn,
+	drawingState,accessControlState,gameControllerState,pixelRow,pixelColumn,
 	//from gameBrain
 	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
 	//from somewhere else lol

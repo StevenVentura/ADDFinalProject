@@ -20,7 +20,8 @@ module GameController(
 		setTimeMaxFlag, startGameFlag, enableSetTimeFlag, 
 		enableSetUserIDFlag, enableSetPassFlag, enableStartButtonFlag, clearFlag,
 		HEX0_s, HEX1_s, HEX2_s, HEX3_s, HEX4_s, HEX5_s, HEX6_s, HEX7_s,
-		writeOrRead, maxScore);
+		writeOrRead, maxScore,
+		state);
 
 
 
@@ -38,7 +39,7 @@ module GameController(
 	output reg[3:0] scoreDisp;	
 	output reg[17:0] LEDs; 
 	output reg[3:0] HEX0_s, HEX1_s, HEX2_s, HEX3_s, HEX4_s, HEX5_s, HEX6_s, HEX7_s;
-	reg[3:0] state;
+	output reg[3:0] state;
 	reg[21:0] blinkCnt;
 
 	wire showCurrentOrMaxScore;

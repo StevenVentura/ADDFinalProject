@@ -8,12 +8,12 @@ The result returns a YES if the password is matched, and NO if it is not matched
 The result is only given after the user enters all 6 bits.
 */ 
 
-module accessControl (userIDfoundFlag, loadButton_s, PASSWORD, passInput, clk, rst, accessFlag, blinkFlag, outOfAttemptsFlag);
+module accessControl (userIDfoundFlag, loadButton_s, PASSWORD, passInput, clk, rst, accessFlag, blinkFlag, outOfAttemptsFlag,state);
 	input loadButton_s, rst, clk, userIDfoundFlag;
 	input[3:0] passInput;
 	input[15:0] PASSWORD;
 	output reg accessFlag, blinkFlag, outOfAttemptsFlag;
-	reg[2:0] state;
+	output reg[2:0] state;
 	reg isFlagRed;
 	reg[1:0] attemptCnt;
 
