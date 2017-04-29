@@ -196,7 +196,7 @@ set_location_assignment PIN_G21 -to userIDfoundFlagLED
 set_location_assignment PIN_E24 -to startGameLEDs[0]
 set_location_assignment PIN_E22 -to startGameLEDs[1]
 set_global_assignment -name VERILOG_FILE ../src/separateNumDigits_test.v
-set_global_assignment -name VERILOG_FILE ../src/DrawTheGame.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/DrawTheGame.v
 set_global_assignment -name VERILOG_FILE ../src/DrawingStateHandler.v
 set_global_assignment -name VERILOG_FILE ../src/loadReg4b.v
 set_global_assignment -name VERILOG_FILE ../src/separateNumDigits.v
@@ -208,7 +208,7 @@ set_global_assignment -name VERILOG_FILE ../src/numDisp.v
 set_global_assignment -name VERILOG_FILE ../src/loadReg16b.v
 set_global_assignment -name VERILOG_FILE ../src/LFSR_Timer_1ms.v
 set_global_assignment -name VERILOG_FILE ../src/GameController.v
-set_global_assignment -name SYSTEMVERILOG_FILE ../src/gameBrain.v
+set_global_assignment -name VERILOG_FILE ../src/gameBrain.v
 set_global_assignment -name VERILOG_FILE ../src/Counter100ms.v
 set_global_assignment -name VERILOG_FILE ../src/CountDownTimer.v
 set_global_assignment -name VERILOG_FILE ../src/buttonShaper.v

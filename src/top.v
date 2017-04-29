@@ -72,7 +72,7 @@ module top(clk, KEY,
 	//drawing information
 	wire [9:0] pixelRow,pixelColumn;
 	wire [3:0] drawingState;
-	wire textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
+	wire displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel;
 	
 
 	assign resetGameFlag = ~(clearFlag || ~rst);
@@ -130,7 +130,7 @@ module top(clk, KEY,
 	clk, DAC_clk, VGA_hSync, VGA_vSync, blank_n, 
 	scoreFlag, gameOverFlag, BALL_clk,
 	pixelRow,pixelColumn,
-	textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel);
+	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel);
 
 	//calculates the current state-machine-state of the game based on which boolean flags are up
 	DrawingStateHandler dsh (
@@ -143,7 +143,8 @@ module top(clk, KEY,
 	//inputs
 	drawingState,pixelRow,pixelColumn,
 	//from gameBrain
-	textBox,letterPixel,displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
+	displayArea,middleSection,boundaries,playerArea,appleArea,enemyPixel,
+	BALL_clk,
 	//from somewhere else lol
 	gameOverFlag,
 	//outputs
