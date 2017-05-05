@@ -114,7 +114,8 @@ module CountDownTimer(rst, startCount, gameOverFlag, setTimeMaxFlag_s, KEY1_s, i
 
 	always @(posedge KEY1_s, negedge rst)	begin
 		if(~rst)	begin
-			secMax <= 4'd1;
+			//the default starting time
+			secMax <= 4'd2;
 			minMax <= 4'd0;
 		end
 		else	begin

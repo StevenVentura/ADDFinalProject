@@ -65,6 +65,9 @@ integer please;//counter for my loops
 			  textBoxLeft = 640-32*16,
 			  textBoxRight = 640;
 	reg [32*16-1:0] textField [0:31];//holds the 16 letters
+
+
+
 	
 	task drawNumber(input [3:0] textIndex, input [3:0] number);
 reg [31:0] getDigit [0:31];
@@ -123,43 +126,7 @@ wire R;
 	
 	
 	
-//draw to the screen
-	assign R = displayArea && (
-			letterPixel
-			||
-			(playerArea && ~gameOverFlag && ~boundaries)
-			||
-			(appleArea)
-			||
-			(enemyPixel)//red and yellow 
-			||
-			(boundaries && gameOverFlag)
-			);
-	assign G = displayArea && (
-			letterPixel
-			||
-			(playerArea && ~gameOverFlag)
-			||
-			gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel && (stevenbackgroundsequence[0] || stevenbackgroundsequence[3]))
-			||
-			//~gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel)
-			//||
-			gameOverFlag && (boundaries && ~playerArea && ~appleArea && ~enemyPixel && stevenbackgroundsequence[2])
-			||
-			~gameOverFlag && (boundaries && ~playerArea && ~enemyPixel && ~appleArea)
-			||
-			(enemyPixel)
-			);
-	assign B = displayArea && ( 
-				letterPixel
-				||
-				(playerArea && ~gameOverFlag)
-				|| 
-				gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel && (stevenbackgroundsequence[1]))
-				||
-				~gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel)
-				);
-				
+			
 //states for DrawingStateHandler controller
 parameter ENTERING_CREDENTIALS=4'd1,
 		  ENTERING_TIME=4'd2,
@@ -199,6 +166,13 @@ drawCharacter(5,cX);
 drawCharacter(6,cX);
 drawCharacter(7,cX);
 drawCharacter(8,cX);
+drawCharacter(9,c_);
+drawCharacter(10,c_);
+drawCharacter(11,c_);
+drawCharacter(12,c_);
+drawCharacter(13,c_);
+drawCharacter(14,c_);
+drawCharacter(15,c_);
 case(accessControlState)
 BIT1:begin
 drawNumber(5,PASSWORD[15:12]);
@@ -292,12 +266,64 @@ drawCharacter(15,cCHICKEN);
 end//end PLAYING_GAME
 endcase
 end//end always
-always@(posedge clk)
-	begin
-	
-		VGA_R = {8{R}};
-		VGA_G = {8{G}};
-		VGA_B = {8{B}};
-	end
 
+
+/*parameter reg[7:0]
+imageRed [0:31] [0:31]= '{32'{'hff}},
+imageGreen [0:31] [0:31] = '{},
+imageBlue [0:31] [0:31] = '{}
+;*/
+/*reg [7:0] templol = 'h33;
+parameter reg[7:0] 
+testeroo [0:1] [0:1] = '{ '{'hff, 'hff}, '{'hff, 'hff} };
+*/
+parameter reg[7:0] 
+imageRed [0:31] [0:31] = '{ '{'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31},'{'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31},'{'hef,'hef,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31,'h31,'h31},'{'hef,'hef,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31,'h31,'h31},'{'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31},'{'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31}},
+imageGreen [0:31] [0:31] = '{ '{'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h30,'h30},'{'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h30,'h30},'{'heb,'heb,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h82,'h69,'h69,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h8a,'h41,'h41,'h30,'h30,'h30,'h30},'{'heb,'heb,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'h30,'h30,'h30,'h30},'{'heb,'heb,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'h30,'h30,'h30,'h30},'{'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'h30,'h30},'{'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'haa,'h30,'h30}},
+imageBlue [0:31] [0:31] = '{ '{'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31},'{'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31},'{'hef,'hef,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h84,'h6b,'h6b,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h8c,'h42,'h42,'h31,'h31,'h31,'h31},'{'hef,'hef,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31,'h31,'h31},'{'hef,'hef,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31,'h31,'h31},'{'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31},'{'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'had,'h31,'h31}};
+
+
+
+reg isImagePixel;
+assign isImagePixel = (pixelRow < textBoxBottom) && boundaries && ~(enemyPixel || appleArea || playerArea || letterPixel);
+
+
+ 
+//draw to the screen
+	assign VGA_R = isImagePixel ? imageRed[pixelRow][pixelColumn] : {8{(displayArea && (
+			letterPixel
+			||
+			(playerArea && ~gameOverFlag && ~boundaries)
+			||
+			(appleArea)
+			||
+			(enemyPixel)//red and yellow 
+			||
+			(boundaries && gameOverFlag)
+			))}};
+	assign VGA_G = isImagePixel ? imageGreen[pixelRow][pixelColumn] : {8{(displayArea && (
+			letterPixel
+			||
+			(playerArea && ~gameOverFlag)
+			||
+			gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel && (stevenbackgroundsequence[0] || stevenbackgroundsequence[3]))
+			||
+			//~gameOverFlag && (~playerArea && ~boundaries && ~enemyPixel)
+			//||
+			gameOverFlag && (boundaries && ~playerArea && ~appleArea && ~enemyPixel && stevenbackgroundsequence[2])
+			||
+			~gameOverFlag && (boundaries && ~playerArea && ~enemyPixel && ~appleArea)
+			||
+			(enemyPixel)
+			))}};
+	assign VGA_B = isImagePixel ? imageBlue[pixelRow][pixelColumn] : {8{(displayArea && ( 
+				letterPixel
+				||
+				(playerArea && ~gameOverFlag)
+				|| 
+				gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel && (stevenbackgroundsequence[1]))
+				||
+				~gameOverFlag && (~appleArea && middleSection && ~playerArea && ~enemyPixel)
+				))}};
+	
 endmodule

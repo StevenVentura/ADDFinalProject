@@ -1,6 +1,8 @@
 //Steven Ventura & Binh Doan
 //made this program on 4/3/2017
-//bounces a ball up and down and left and right
+/*
+
+*/
 
 module gameBrain(
 	// inputs
